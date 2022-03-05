@@ -1,0 +1,47 @@
+@ Fri May  1 15:08:08 2020                   Matthew Morfea
+@ Compiler    = C:\Users\matth\Desktop\Language Processing\wicrpi\c2.py
+@ Input file  = c2.in
+@ Output file = c2.s
+@------------------------------------------- Assembler code
+   .global main 
+   .text 
+main: 
+   push {lr}
+
+
+@ print(-59 + 20*3)
+   ldr r0, =.fmt0
+   ldr r1 =.i1
+   ldr r1, [r1]
+   bl printf
+
+@ a = 2
+   ldr r0, =.i2
+
+@ bb_1 = -(a) + 12
+   mov r0, r0
+   neg r0, r0
+   mov r2, r0
+   ldr r1, =.i1
+
+@ print(a*bb_1 + a*3*(-1 + -1 + -1))
+   ldr r0, =.fmt0
+   ldr r1 =.i2
+   ldr r1, [r1]
+   bl printf
+
+   mov r0, #0
+   pop {pc}
+   .data
+.fmt0:    .asciz "%d\n"
+.i_59:    .word -59
+.i20:     .word 20
+.i3:      .word 3
+.i60:     .word 60
+.i1:      .word 1
+a:        .word 0
+.i2:      .word 2
+bb_1:     .word 0
+.t0:      .word 0
+.i12:     .word 12
+.i_1:     .word -1
